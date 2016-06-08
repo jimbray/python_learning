@@ -4,6 +4,7 @@ SendMode Input  ; Recommended for new scripts due to its superior speed and reli
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
 
+; get chrome
 #c::
 {
   IfWinNotExist ahk_class Chrome_WidgetWin_1
@@ -18,6 +19,33 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
   Else
   {
     WinMinimize
-    }
-    Return
+  }
+  Return
 }
+
+;get wechat
+#z::
+{
+  IfWinNotExist ahk_class WeChatMainWndForPC
+  {
+    Run "D:\Program Files (x86)\Tencent\WeChat\WeChat.exe"
+    WinActivate
+  }
+  Else IfWinNotActive ahk_class Chrome_WidgetWin_1
+  {
+    WinActivate
+  }
+  Else
+  {
+    WinMinimize
+  }
+  Return
+}
+
+#0::
+{
+  WinGetClass, class, A
+  MsgBox, The active window's class is "%class%".
+}
+
+
