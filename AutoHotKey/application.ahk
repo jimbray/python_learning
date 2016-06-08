@@ -31,7 +31,7 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
     Run "D:\Program Files (x86)\Tencent\WeChat\WeChat.exe"
     WinActivate
   }
-  Else IfWinNotActive ahk_class Chrome_WidgetWin_1
+  Else IfWinNotActive ahk_class WeChatMainWndForPC
   {
     WinActivate
   }
