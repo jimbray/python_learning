@@ -49,3 +49,6 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 }
 
 
+;upload clipboard to qiniu
+^!v::
+run,%comspec% /c python F:\git\Python_leaning\python_learning\clipboard\get_content.py ,, hide
