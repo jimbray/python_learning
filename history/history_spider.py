@@ -37,6 +37,12 @@ def check_time_for_get():
 @app.route('/today')
 def today():
     result = get_all_history_today()
+    return 'This page should be a html.'
+    # return json.dumps(result, ensure_ascii=False)
+
+@app.route('/api/v0.1/today', methods=['POST'])
+def get_today():
+    result = get_all_history_today()
     return json.dumps(result, ensure_ascii=False)
 
 
