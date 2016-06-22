@@ -45,7 +45,7 @@ def get_history():
         else:
             header_img_url = ''
 
-        history = History(title, target_url, header_img_url.encode('utf-8').strip())
+        history = History(title, target_url, header_img_url.encode('utf-8').strip(), month, day)
         history.save_to_database()
         print('title->%s url->%s img->%s' % (title, target_url, header_img_url))
 
@@ -66,6 +66,6 @@ def get_carousel():
         print(title)
         all_a = dd.find_all('a')
         img_url = all_a[0].find('img')['src']
-        carousel = Carousel(title.encode('utf-8').strip(), img_url.encode('utf-8').strip())
+        carousel = Carousel(title.encode('utf-8').strip(), img_url.encode('utf-8').strip(), month, day)
         carousel.save_to_database()
         print('title->%s img_url->%s' % (title.encode('utf-8').strip(), img_url.encode('utf-8').strip()))

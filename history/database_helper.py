@@ -5,11 +5,13 @@ import sqlite3
 
 
 class History():
-    def __init__(self, title, target_url, header_img_url):
+    def __init__(self, title, target_url, header_img_url, month, day):
         create_history_db()
         self.title = title
         self.target_url = target_url
         self.header_img_url = header_img_url
+        self.month = month
+        self.day = day
         self.cursor, self.conn = conncet_db()
 
     def save_to_database(self):
@@ -18,14 +20,15 @@ class History():
 
         cursor = self.conn.execute(select_str)
         if cursor.rowcount > 0:
-            #更新
-            update_str = 'update history set title="%s",target_url="%s", header_img_url="%s" where title="%s"' % (self.title, self.target_url, self.header_img_url, self.title)
+            # 更新
+            update_str = 'update history set title="%s",target_url="%s", header_img_url="%s", month="%s", day="%s" where title="%s"' % (
+                self.title, self.target_url, self.header_img_url, self.title, self.month, self.day)
             self.cursor.execute(update_str)
         else:
-            insert_str = 'insert into history ("title", "target_url", "header_img_url") values ("%s", "%s", "%s")' % (self.title, self.target_url, self.header_img_url)
-            #插入
+            insert_str = 'insert into history ("title", "target_url", "header_img_url", "month", "day") values ("%s", "%s", "%s", "%s", %s)' % (
+                self.title, self.target_url, self.header_img_url, self.month, self.day)
+            # 插入
             self.cursor.execute(insert_str)
-
 
         self.conn.commit()
         self.close_database()
@@ -35,11 +38,12 @@ class History():
 
 
 class Carousel():
-
-    def __init__(self, title, img_url):
+    def __init__(self, title, img_url, month, day):
         create_carousel_db()
         self.title = title
         self.img_url = img_url
+        self.month = month
+        self.day = day
         self.cursor, self.conn = conncet_db()
 
     def save_to_database(self):
@@ -47,12 +51,14 @@ class Carousel():
 
         cursor = self.conn.execute(select_str)
         if cursor.rowcount > 0:
-            #更新
-            update_str = 'update carousel set title="%s",img_url="%s" where title="%s"' % (self.title, self.img_url, self.title)
+            # 更新
+            update_str = 'update carousel set title="%s",img_url="%s", month="%s", day="%s" where title="%s"' % (
+                self.title, self.img_url, self.month, self.day)
             self.cursor.execute(update_str)
         else:
-            insert_str = 'insert into carousel ("title", "img_url") values ("%s", "%s")' % (self.title, self.img_url)
-            #插入
+            insert_str = 'insert into carousel ("title", "img_url", "month", "day") values ("%s", "%s", "%s", "%s")' % (
+                self.title, self.img_url, self.month, self.day)
+            # 插入
             self.cursor.execute(insert_str)
         self.conn.commit()
         self.close_database()
@@ -63,29 +69,33 @@ class Carousel():
 
 def create_history_db():
     cursor, conn = conncet_db()
-    cursor.execute('CREATE TABLE IF NOT EXISTS history  (id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, target_url TEXT, header_img_url TEXT ,content_html TEXT)')
+    cursor.execute(
+        'CREATE TABLE IF NOT EXISTS history  (id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, target_url TEXT, header_img_url TEXT ,content_html TEXT, month INT, day INT)')
     close_db(cursor, conn)
 
 
 def create_carousel_db():
     cursor, conn = conncet_db()
-    cursor.execute('CREATE TABLE IF NOT EXISTS carousel  (id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, img_url TEXT)')
+    cursor.execute(
+        'CREATE TABLE IF NOT EXISTS carousel  (id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, img_url TEXT, month INT, day INT)')
     conn.commit()
     close_db(cursor, conn)
 
 
-def get_all_history_today():
+def get_history_by_date(month, day):
     cursor, conn = conncet_db()
-    select_str = 'select title, target_url, header_img_url, content_html from history'
+    select_str = 'select title, target_url, header_img_url, content_html from history where month="%s" and day="%s"' % (
+        month, day)
     cursor.execute(select_str)
 
     conn.commit()
 
     result_arr = []
 
-    #处理第一条数据
+    # 处理第一条数据
     first_data = cursor.fetchone()
-    dic = {'title': first_data[0], 'target_url': first_data[1], 'header_img_url': first_data[2], 'content_html': first_data[3]}
+    dic = {'title': first_data[0], 'target_url': first_data[1], 'header_img_url': first_data[2],
+           'content_html': first_data[3]}
     result_arr.append(dic)
 
     if first_data is None:
