@@ -4,7 +4,7 @@ __author__ = 'jimbray'
 from bs4 import BeautifulSoup
 import sys, urllib2
 
-test_url = 'https://www.zhihu.com/question/25339255'
+test_url = 'https://www.zhihu.com/question/21683968'
 
 def get_html(url):
     req = urllib2.Request(url)
@@ -14,11 +14,13 @@ def get_html(url):
 
 if __name__ == '__main__':
     html_soup = get_html(test_url)
+    print(html_soup.prettify())
     title = html_soup.find('h2', class_='zm-item-title').span.string
     print(u'开始查看问题' + title)
     answer_num = html_soup.find('h3', id='zh-question-answer-num').string
     print(answer_num)
-    answer_div_list_tag = html_soup.select('div .zm-item-answer')
+    # answer_div_list_tag = html_soup.find_all('div', class_='zm-item-answer')
+    answer_div_list_tag = html_soup.find_all('div', class_='zm-item-answer')
     if answer_div_list_tag is not None:
         print(u'能看到的回答有 ' + str(len(answer_div_list_tag)) + u'个')
         answer_count = 0;
