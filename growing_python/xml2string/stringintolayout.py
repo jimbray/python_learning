@@ -7,9 +7,9 @@ import os
 import xml.etree.ElementTree as ET
 
 # 获取当前文件夹内所有layout文件列表
-def get_all_layout_xml():
+def get_all_layout_xml(path):
     file_list = []
-    for file_name in os.listdir():
+    for file_name in os.listdir(path):
         if '.xml' in file_name and 'strings.xml' not in file_name:
             print(file_name)
             file_list.append(file_name)
@@ -18,7 +18,7 @@ def get_all_layout_xml():
 
 # 查找第一个与指定字符相同的 标签的 name
 def find_match_text_key_in_string(text):
-    string_tree = ET.ElementTree(file='strings.xml')
+    string_tree = ET.ElementTree(file='string_file/strings.xml')
     root = string_tree.getroot()
     for child_of_root in root:
         if child_of_root.text == text:
@@ -28,13 +28,14 @@ def find_match_text_key_in_string(text):
 
 
 def do_work():
-    layout_file_list = get_all_layout_xml()
+    layout_file_list = get_all_layout_xml('layout_files')
     with open('result.md', 'w', encoding='utf-8') as result_file, open('lost.xml', 'w', encoding='utf-8') as xml_file:
+        lost_content_dict = {}
         result_content = ''
         xml_content = ''
         for file in layout_file_list:
             result_content += '### ' + file + '\n'
-            with open(file, 'r+', encoding='utf-8') as file_layout:
+            with open('layout_files/' + file, 'r+', encoding='utf-8') as file_layout:
                 lines = file_layout.readlines()
 
                 rewrite_file_content = ''
@@ -44,7 +45,7 @@ def do_work():
                         if 'android:text=' in line:
                             if '@string/' not in line:
                                 print(line, )
-                                text = line[line.index('"') + 1: len(line) - 2]
+                                text = line[line.index('"') + 1: line.find('"', line.index('"') + 1)]
                                 matched_key_name = find_match_text_key_in_string(text)
 
                                 result_content += line.lstrip().rstrip()
@@ -65,7 +66,10 @@ def do_work():
                                     result_content += '(failed)\n'
                                     xml_content += '%s%s%s%s%s' % (
                                         '<string name="',
-                                        text.lstrip().rstrip().replace(' ', '_').replace('"', '').replace("'", ''),
+                                        ''.join(text.lstrip().rstrip().replace(' ', '_').replace('"', '').replace("'",
+                                                                                                                  '').replace('’', '')
+                                                .replace('!', '').replace(
+                                            '\\', '').lower().split()),
                                         '">', text,
                                         '</string>\n')
 
@@ -88,3 +92,8 @@ def do_work():
 
 if __name__ == '__main__':
     do_work()
+    # get_all_layout_xml('layout_files')
+    # test_str = '     abcd"\\'
+    # print(test_str)
+    # print(''.join(test_str.split()))
+    # print('done')
