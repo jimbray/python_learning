@@ -31,6 +31,7 @@ def do_work():
     layout_file_list = get_all_layout_xml('layout_files')
     with open('result.md', 'w', encoding='utf-8') as result_file, open('lost.xml', 'w', encoding='utf-8') as xml_file:
         lost_content_dict = {}
+        lost_key_name_list = []
         result_content = ''
         xml_content = ''
         for file in layout_file_list:
@@ -41,7 +42,7 @@ def do_work():
                 rewrite_file_content = ''
 
                 for line in lines:
-                    if line != '':
+                    if line != '' and '<!--' not in line:
                         if 'android:text=' in line:
                             if '@string/' not in line:
                                 print(line, )
@@ -51,7 +52,6 @@ def do_work():
                                 result_content += line.lstrip().rstrip()
                                 result_content += '---> '
                                 if matched_key_name is not None:
-
 
                                     replace_text = '%s%s%s%s' % (
                                         line[0: line.index('=') + 1], '"@string/', str(matched_key_name), '"\n')
@@ -64,26 +64,56 @@ def do_work():
                                 else:
                                     print("can't find the match text --> ", text)
                                     result_content += '(failed)\n'
-                                    xml_content += '%s%s%s%s%s' % (
-                                        '<string name="',
-                                        ''.join(text.lstrip().rstrip().replace(' ', '_').replace('"', '').replace("'",
-                                                                                                                  '').replace('’', '')
-                                                .replace('!', '').replace(
-                                            '\\', '').lower().split()),
-                                        '">', text,
-                                        '</string>\n')
 
-                                    # file.write(replace_text)
-                                    # file.flush()
+                                    target_key_name = ''.join(text.lstrip().rstrip()
+                                                              .replace(' ', '_')
+                                                              .replace('"', '')
+                                                              .replace("'", '')
+                                                              .replace('’', '')
+                                                              .replace('!', '')
+                                                              .replace('\\', '')
+                                                              .replace('/', '_')
+                                                              .replace('.', '')
+                                                              .replace('(', '_')
+                                                              .replace(')', '_')
+                                                              .replace(',', '_')
+                                                              .replace('?', '')
+                                                              .lower().split())
+
+                                    # 如果key name 已经存在
+                                    if target_key_name in lost_key_name_list:
+                                        lost_content_dict[target_key_name] += 1  # 进行统计
+                                        continue
+                                    else:
+                                        lost_key_name_list.append(target_key_name)
+                                        lost_content_dict[target_key_name] = 1
+                                        xml_content += '%s%s%s%s%s' % (
+                                            '<string name="',
+                                            target_key_name,
+                                            '">',
+                                            text,
+                                            '</string>\n')
+
+                                        # file.write(replace_text)
+                                        # file.flush()
                         rewrite_file_content += line
+
                 file_layout.seek(0)
                 file_layout.truncate()
                 file_layout.write(rewrite_file_content)
                 result_content += '\n\n'
-            result_content += '\n\n\n'
+            result_content += '\n-----------------------------\n'
+
+        for key, value in lost_content_dict.items():
+                    if int(value) > 1:
+                        # print('%s%s%s%s' % (key, ' 出现了 ', value, ' 次\n'))
+                        result_content += '%s%s%s%s' % (key, ' 出现了 ', value, ' 次\n')
+
         result_file.seek(0)
         result_file.truncate()
         result_file.write(result_content)
+
+        # print(lost_content_dict)
 
         xml_file.seek(0)
         xml_file.truncate()
