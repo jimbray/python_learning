@@ -17,60 +17,123 @@ def find_match_text_key_in_string(text):
             # print(child_of_root.text)
 
 
-# def compare():
-# with open('different.xml', 'w', encoding='utf-8') as diff_file, open('same.xml', 'w',
-#                                                                          encoding='utf-8') as same_file:
-#         android_tree = ET.ElementTree(file='android.xml')
-#         android_root = android_tree.getroot()
-#
-#         ios_tree = ET.ElementTree(file='ios.xml')
-#         ios_root = ios_tree.getroot()
-#
-#         same_file_content = ''
-#         diff_file_content = ''
-#
-#         diff_list_line = []
-#
-#         for child_of_android in android_root:
-#             index = 0
-#             for child_of_ios in ios_root:
-#                 if child_of_android.text == child_of_ios.text:
-#                     same_file_content += '<string name="%s">%s</string>\n' % (
-#                         child_of_android.attrib['name'], child_of_android.text)
-#                     break
-#                 # else:
-#                 # diff_file_content += '<string name="%s">%s</string>\n' % (
-#                 # child_of_android.attrib['name'], child_of_android.text)
-#                 # diff_file_content += '<string name="%s">%s</string>\n\n' % (
-#                 #     child_of_ios.attrib['name'], child_of_ios.text)
-#                 index += 1
-#                 # print(str(index) + '<--->' + str(len(ios_root)))
-#                 if index == len(ios_root):
-#                     diff_file_content += '<string name="%s">%s</string>\n' % (
-#                         child_of_android.attrib['name'], child_of_android.text)
-#                     diff_file_content += '<string name="%s">%s</string>\n\n' % (
-#                         child_of_ios.attrib['name'], child_of_ios.text)
-#                 else:
-#                     continue
-#         diff_file.seek(0)
-#         diff_file.truncate()
-#         diff_file.write(diff_file_content)
-#         same_file.seek(0)
-#         same_file.truncate()
-#         same_file.write(same_file_content)
-#
-#         print('Everything is done')
+def compare():
+    with open('android_different.xml', 'w', encoding='utf-8') as android_diff_file, open('ios_different.xml', 'w',
+                                                                                         encoding='utf-8') as ios_diff_file, open(
+            'same.xml', 'w', encoding='utf-8') as same_file:
+        android_tree = ET.ElementTree(file='android.xml')
+        android_root = android_tree.getroot()
+
+        ios_tree = ET.ElementTree(file='ios.xml')
+        ios_root = ios_tree.getroot()
+
+        same_file_content = ''
+        android_diff_file_content = ''
+        ios_diff_file_content = ''
+
+        diff_list_line = []
+
+        for child_of_android in android_root:
+            index = 0
+            for child_of_ios in ios_root:
+                if child_of_android.text == child_of_ios.text:
+                    # same_file_content += '<string name="%s">%s</string>\n' % (
+                    #     child_of_android.attrib['name'], child_of_android.text)
+                    break
+                # else:
+                # diff_file_content += '<string name="%s">%s</string>\n' % (
+                # child_of_android.attrib['name'], child_of_android.text)
+                # diff_file_content += '<string name="%s">%s</string>\n\n' % (
+                # child_of_ios.attrib['name'], child_of_ios.text)
+                index += 1
+                # print(str(index) + '<--->' + str(len(ios_root)))
+                if index == len(ios_root):
+                    android_diff_file_content += '<string name="%s">%s</string>\n' % (
+                        child_of_android.attrib['name'], child_of_android.text)
+                    # diff_file_content += '<string name="%s">%s</string>\n\n' % (
+                    # child_of_ios.attrib['name'], child_of_ios.text)
+                else:
+                    continue
+
+        for child_of_ios in ios_root:
+            index = 0
+            for child_of_android in android_root:
+                if child_of_android.text == child_of_ios.text:
+                    same_file_content += '<string name="%s">%s</string>\n' % (
+                        child_of_android.attrib['name'], child_of_android.text)
+                    break
+                # else:
+                # diff_file_content += '<string name="%s">%s</string>\n' % (
+                # child_of_android.attrib['name'], child_of_android.text)
+                # diff_file_content += '<string name="%s">%s</string>\n\n' % (
+                # child_of_ios.attrib['name'], child_of_ios.text)
+                index += 1
+                # print(str(index) + '<--->' + str(len(ios_root)))
+                if index == len(android_root):
+                    # diff_file_content += '<string name="%s">%s</string>\n' % (
+                    # child_of_android.attrib['name'], child_of_android.text)
+                    ios_diff_file_content += '<string name="%s">%s</string>\n' % (
+                        child_of_ios.attrib['name'], child_of_ios.text)
+                else:
+                    continue
+        android_diff_file.seek(0)
+        android_diff_file.truncate()
+        android_diff_file.write(android_diff_file_content)
+        ios_diff_file.seek(0)
+        ios_diff_file.truncate()
+        ios_diff_file.write(ios_diff_file_content)
+
+        same_file.seek(0)
+        same_file.truncate()
+        same_file.write(same_file_content)
+
+        print('Everything is done')
 
 
-def compare_string():
-    with open('Localizable.strings', 'r+', encoding='utf-8') as ios_file, open('same.xml', 'w', encoding='utf-8') as same_file, open(
-            'diff.xml', 'w', encoding='utf-8') as diff_file:
-        ios_lines = ios_file.readlines()
+# def compare_string():
+# with open('iso.txt', 'r+', encoding='utf-8') as ios_file, open('same.xml', 'w', encoding='utf-8') as same_file, open(
+# 'diff.xml', 'w', encoding='utf-8') as diff_file:
+# ios_lines = ios_file.readlines()
+#
+# for ios_line in ios_lines:
+# ios_line_str = ios_line.split('=')
+# print(ios_line)
+
+
+def convert_txt_to_xml():
+    with open('ios.txt', 'r', encoding='utf-8') as ori_file, open('ios.xml', 'w+', encoding='utf-8') as target_file:
+        ios_lines = ori_file.readlines()
+
+        target_file_content = '<ios>\n'
 
         for ios_line in ios_lines:
-            ios_line_str = ios_line.split('=')
-            print(ios_line)
+            ios_line_str_array = ios_line.split('=')
+            if len(ios_line_str_array) > 1:
+
+                key = ''.join(ios_line_str_array[0])
+                value = ''.join(ios_line_str_array[1])
+
+                # 对 key 和 value 做一下处理
+                key = ''.join(key)
+                key = key[1:key.find('"', 1)]
+
+                value = value.lstrip()
+                value = value[1:value.find('"', 1)]
+                value = value.replace('&', 'and')
+
+                print(key + '->' + value)
+                content_str = '<string name="%s">%s</string>\n' % (
+                    key, value)
+                target_file_content += content_str
+            else:
+                print('array length failed')
+
+        target_file_content += '</ios>'
+        target_file.seek(0)
+        target_file.truncate()
+        target_file.write(target_file_content)
 
 
 if __name__ == '__main__':
-    compare_string()
+    convert_txt_to_xml()
+    compare()
