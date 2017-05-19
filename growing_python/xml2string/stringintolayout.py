@@ -22,7 +22,11 @@ def find_match_text_key_in_string(text):
     root = string_tree.getroot()
     for child_of_root in root:
         if child_of_root.text == text:
-            return str(child_of_root.attrib['name'])
+            value = child_of_root.attrib['name']
+            if '@' in value:
+                return None
+            else:
+                return str(value)
             # print(child_of_root.attrib['name'])
             # print(child_of_root.text)
 
@@ -54,7 +58,7 @@ def do_work():
                                 if matched_key_name is not None:
 
                                     replace_text = '%s%s%s%s' % (
-                                        line[0: line.index('=') + 1], '"@string/', str(matched_key_name), '"\n')
+                                        line[0: line.index('=') + 1], '"@string/', str(matched_key_name), '"\n') # 如果后面有 其他字符 比如 结束标签</a> 有问题
                                     print(replace_text)
 
                                     result_content += replace_text
@@ -78,6 +82,8 @@ def do_work():
                                                               .replace(')', '_')
                                                               .replace(',', '_')
                                                               .replace('?', '')
+                                                              .replace('-', '_')
+                                                              .replace(':', '_')
                                                               .lower().split())
 
                                     # 如果key name 已经存在
