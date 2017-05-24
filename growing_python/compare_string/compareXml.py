@@ -17,14 +17,15 @@ def find_match_text_key_in_string(text):
             # print(child_of_root.text)
 
 
+
 def compare():
     with open('android_different.xml', 'w', encoding='utf-8') as android_diff_file, open('ios_different.xml', 'w',
                                                                                          encoding='utf-8') as ios_diff_file, open(
             'same.xml', 'w', encoding='utf-8') as same_file:
-        android_tree = ET.ElementTree(file='android.xml')
+        android_tree = ET.ElementTree(file='android_string.xml')
         android_root = android_tree.getroot()
 
-        ios_tree = ET.ElementTree(file='ios.xml')
+        ios_tree = ET.ElementTree(file='project_strings.xml')
         ios_root = ios_tree.getroot()
 
         same_file_content = ''
@@ -101,7 +102,7 @@ def compare():
 
 
 def convert_txt_to_xml():
-    with open('ios.txt', 'r', encoding='utf-8') as ori_file, open('ios.xml', 'w+', encoding='utf-8') as target_file:
+    with open('string.txt', 'r', encoding='utf-8') as ori_file, open('android_string.xml', 'w+', encoding='utf-8') as target_file:
         ios_lines = ori_file.readlines()
 
         target_file_content = '<ios>\n'
@@ -134,6 +135,38 @@ def convert_txt_to_xml():
         target_file.write(target_file_content)
 
 
+def find_different_between_file():
+    with open('lost.xml', 'w', encoding='utf-8') as lost_file, open('same.xml', 'w', encoding='utf-8') as sam_file:
+        ori_tree = ET.ElementTree(file='project_strings.xml')
+        ori_root = ori_tree.getroot()
+
+        being_compare_tree = ET.ElementTree(file='android_string.xml')
+        being_compare_root = being_compare_tree.getroot()
+
+        same_content = ''
+        lost_content = ''
+
+        for old_item in ori_root:
+            key_name = old_item.attrib['name']
+            hasSame = False
+            for new_item in being_compare_root:
+                if new_item.attrib['name'] == key_name:
+                    same_content += '<string name="%s">%s</string>\n' % (key_name, old_item.text)
+                    hasSame = True
+                    break
+
+            if not hasSame:
+                lost_content += '<string name="%s">%s</string>\n' % (key_name, old_item.text)
+
+        lost_file.seek(0)
+        lost_file.truncate()
+        lost_file.write(lost_content)
+
+        sam_file.seek(0)
+        sam_file.truncate()
+        sam_file.write(same_content)
+
 if __name__ == '__main__':
     convert_txt_to_xml()
-    compare()
+    # compare()
+    # find_different_between_file()
