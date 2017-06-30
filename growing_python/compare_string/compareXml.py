@@ -105,7 +105,7 @@ def convert_txt_to_xml():
     with open('string.txt', 'r', encoding='utf-8') as ori_file, open('android_string.xml', 'w+', encoding='utf-8') as target_file:
         ios_lines = ori_file.readlines()
 
-        target_file_content = '<ios>\n'
+        target_file_content = '<resource>\n'
 
         for ios_line in ios_lines:
             ios_line_str_array = ios_line.split('=')
@@ -129,7 +129,7 @@ def convert_txt_to_xml():
             else:
                 print('array length failed')
 
-        target_file_content += '</ios>'
+        target_file_content += '</resource>'
         target_file.seek(0)
         target_file.truncate()
         target_file.write(target_file_content)
