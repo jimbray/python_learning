@@ -7,7 +7,7 @@ import math
 
 
 def convert():
-    df = pd.read_excel('final.xlsx', sheetname=3)
+    df = pd.read_excel('pet_breed.xlsx', sheetname=0)
 
     # print(df.dtypes)
 
@@ -26,14 +26,16 @@ def convert():
         # print(index)
         # print(row.a)
         # Chinese / 'Key (Android)'
-        text = row['Chinese']
+        key = row['name']
+        text = row['Spanish']
         if isinstance(text, float):
             if math.isnan(text) is False:
-                print(text)
+                print('msgid "' + key + '"\nmsgstr "' + text + '"\n')
             else:
-                print(text)
+                # print(text)
+                continue
         elif isinstance(text, str):
-            print(text)
+            print('msgid "' + key + '"\nmsgstr "' + text + '"\n')
 
 
 
