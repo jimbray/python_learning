@@ -105,6 +105,49 @@ def set_style(name, height, bold=False):
     return style
 
 
+def writeByPart(sheet, part_list):
+    # 分批写入
+    # 每次 5k 条
+    part = len(part_list) // 5000
+    last_part = len(part_list) % 5000
+    print("part: " + str(part))
+    for part_index in range(0, part):
+        start = 0
+        if part_index > 0:
+            start = 1
+        print("[" + str((5000 * part_index + start)) + "]-[" + str(5000 * (part_index + 1)) + "]")
+        for row in range(5000 * part_index + start, 5000 * (part_index + 1)):
+            line = part_list[row]
+            for column in range(0, len(line)):
+                sheet.write(row + 2, column + 3, line[column], set_style("style", 220))
+
+    # # 还有最后一波
+    # print("last part : [" + str((5000 * part + 1)) + "]-[" + str(5000 * part + last_part) + "]")
+    # sheet.write((5000 * part + 1) + 2, (5000 * part + last_part) + 3, line[(5000 * part + last_part)],
+    #             set_style("style", 220))
+
+
+def writeByFile(total_list, file_name, sheet_index):
+
+    xlsx = xlwt.Workbook(encoding='UTF-8', style_compression=2)
+    print("-"*25 + file_name + "-"*25)
+    sheet = xlsx.add_sheet("TestCase")
+    print("write by sheet -> [" + str(50000*sheet_index) + "-[" + str(50000*(sheet_index+1)) + "]")
+    sheet_list = total_list[50000*sheet_index: 50000*(sheet_index+1)]
+    writeByPart(sheet, sheet_list)
+
+    xlsx.save(file_name + ".xls")
+    print(file_name + "写入完成")
+
+
+def writeList(list):
+    sheet_count = len(list) // 50000 + 1
+    print("sheet count -> " + str(sheet_count))
+    for sheet_index in range(0, sheet_count):
+        writeByFile(list, "TestCase" + str(sheet_index+1), sheet_index)
+
+
+
 def writeExcel(list):
     xlsx = xlwt.Workbook(encoding='UTF-8', style_compression=2)
     sheet = xlsx.add_sheet("TestCase", True)
@@ -139,7 +182,8 @@ def cal():
                                     wind_direction_list, wind_speed_list, is_overtake_list))
     print("list size: " + str(len(result)))
     # print(result)
-    writeExcel(result)
+    writeList(result)
+    # writeExcel(result)
     # print(list(itertools.permutations(["ABCD", "123"], 2)))
     # print(list(itertools.product(["ABCD", "123"], 2)))
 
