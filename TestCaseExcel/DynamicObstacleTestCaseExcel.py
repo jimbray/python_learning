@@ -2,11 +2,11 @@
 # -*- coding:utf-8 _*-
 """ 
 @author:jimbray 
-@file: StaticObstacleTestCaseExcel.py
-@time: 2019/03/06
+@file: DynamicObstacleTestCaseExcel.py
+@time: 2019/03/09
 @contact: jimbra16@gmail.com
 @site: http://jimbray.xyz
-@Descriptions: 
+@Descriptions:
 """
 
 import itertools
@@ -34,14 +34,18 @@ vehicle_road_slope_list = [0, 8]
 print(vehicle_road_slope_list)
 
 # 障碍物类型
-# obstacle_type_list = ["静态", "动态"]
-# obstacle_type_list = ["静态"]
-# print(obstacle_type_list)
+obstacle_type_list = ["行人", "低速车", "同速车", "高速车"]
+print(obstacle_type_list)
 
-# 障碍物形状
-# obstacle_shape_list = ["立方体", "圆柱体", "不规则"]
-# print(obstacle_shape_list)
+# 障碍物方向
+obstacle_direction_list = ["同向", "逆向"]
+print(obstacle_direction_list)
 
+# 障碍物方向 相对车头中心
+obstacle_angle_list = [0, 30, 60, 90]
+print(obstacle_angle_list)
+
+# 障碍物材质
 obstacle_material_list = ["塑料", "石材", "金属", "玻璃"]
 print(obstacle_material_list)
 
@@ -50,11 +54,6 @@ environment_visibility = list(range(50, 501, 50))
 print(environment_visibility)
 
 # 天气
-# weather_type_list = ["晴",
-#                      "小雨", "中雨", "大雨", "暴雨",
-#                      "多云", "阴天",
-#                      "小雪", "中雪", "大雪", "暴雪",
-#                      "大雾", "沙尘暴", "雾霾"]
 weather_type_list = ["晴",
                      "雨天",
                      "阴天",
@@ -69,6 +68,10 @@ print(day_and_night_list)
 wind_direction_list = ["顺风", "逆风"]
 print(wind_direction_list)
 
+# 风速与车头中心夹角
+wind_angle_list = [0, 30, 60, 90]
+print(wind_angle_list)
+
 # 风速
 # wind_speed_list = list(range(0, 37, 3))
 wind_speed_list = [5, 20]
@@ -77,21 +80,6 @@ print(wind_speed_list)
 # 是否有超车条件
 is_overtake_list = ["有", "无"]
 print(is_overtake_list)
-
-# 优先级
-priority_level_list = ["紧急", "不紧急"]
-print(priority_level_list)
-
-# 重要级
-important_level_list = ["重要", "不重要"]
-print(important_level_list)
-
-# total_list = vehicle_speed_list + vehicle_load_weight_list + \
-#              vehicle_driving_track_list + vehicle_road_slope_list + \
-#              obstacle_type_list + obstacle_shape_list + obstacle_material_list + \
-#              environment_visibility + weather_type_list + day_and_night_list + \
-#              wind_direction_list + wind_speed_list + is_overtake_list + \
-#              priority_level_list + important_level_list
 
 # 列的内容对应应该插入的列的位置
 content_line_num_list = [3, 4, 5, 6, 10, 11, 12, 13, 14, 15, 16]
@@ -139,12 +127,16 @@ def writeByFile(total_list, file_name, sheet_index):
     sheet = xlsx.add_sheet("TestCase")
 
     # 添加表头
-    first_sheet_header_dic = {0: "用例ID", 1: "用例名称", 2: "测试场景", 7: "障碍物大小", 15: "优先级", 16: "重要级",
-                              17: "预期结果", 20: "实际结果", 23: "备注", 24: "执行人", 25: "执行日期"}
+    first_sheet_header_dic = {0: "用例ID", 1: "用例名称", 2: "测试场景", 3: "前置条件", 13: "障碍物大小", 21: "优先级", 22: "重要级",
+                              23: "预期结果", 29: "实际结果", 35: "备注", 36: "执行人", 37: "执行日期"}
     second_sheet_header_dic = {3: "无人车设定的最高速度(km/h)", 4: "无人车载重(kg)", 5: "无人车行驶轨迹", 6: "道路坡度(角度)",
-                               7: "长", 8: "宽", 9: "高", 10: "障碍物材质", 11: "环境能见度(m)", 12: "天气",
-                               13: "昼夜", 14: "风速方向（相对车头中心）", 15: "风速（m/s）", 16: "是否有超车条件",
-                               17: "减速开始距离（距离障碍物 单位:m）", 18: "停车距离（距离障碍物 单位:m）", 19: "无人车其他行为",
+                               7: "障碍物类型", 8: "障碍物方向（相对车头中心）", 9: "障碍物与中心夹角 单位：角度",
+                               10: "障碍物加速度 单位：m/s² ", 11: "障碍物与车体相对速度 单位 m/s", 12: "障碍物材质",
+                               13: "长", 14: "宽", 15: "高", 16: "环境能见度(m)", 17: "天气",
+                               18: "昼夜", 19: "风速方向（相对车头中心）", 20: "风速与中心夹角 单位：角度", 21: "风速（m/s）",
+                               22: "是否有超车条件",
+                               25: "减速开始距离（距离障碍物 单位:m）", 26: "停车完成时间 单位：s", 27: "加速开始距离（距离障碍物 单位：m）",
+                               28: "超车完成时间（车身越过障碍物为准） 单位：s", 29: "是否返回原车道", 30: "无人车其他行为"
                                20: "减速开始距离（距离障碍物 单位:m）", 21: "停车距离（距离障碍物 单位:m）", 22: "无人车其他行为"}
     for k, v in first_sheet_header_dic.items():
         sheet.write(0, k, v, set_style("style", 220))
@@ -165,7 +157,6 @@ def writeList(list):
     print("sheet count -> " + str(sheet_count))
     for sheet_index in range(0, sheet_count):
         writeByFile(list, "静态障碍物测试用例-" + str(sheet_index+1), sheet_index)
-
 
 
 def writeExcel(list):
@@ -196,12 +187,10 @@ def writeExcel(list):
 
 def cal():
     # 对应的列
-
     ["无人车设定的最高时速（km/h）", "无人车载重(kg)", "无人车行驶轨迹", "道路坡度(角度)", "障碍物材质", "环境能见度(m)",
      "天气", "昼夜", "风速方向（相对车头中心）", "风速（m/s）", "是否有超车条件"]
     # 列的内容 对应 应该插入的 列的column数
     # {0: 3, 1: 4, 2: 5, 4: 6, 5: 10, 6: 11, 7: 12, 8: 13, 9: 14, 10: 15, 11: 16}
-
 
     result = list(itertools.product(vehicle_speed_list, vehicle_load_weight_list,
                                     vehicle_driving_track_list, vehicle_road_slope_list,
@@ -220,4 +209,3 @@ if __name__ == '__main__':
     cal_precess = Process(target=cal)
     cal_precess.start()
     cal_precess.join()
-    # cal()
