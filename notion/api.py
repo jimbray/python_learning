@@ -38,7 +38,8 @@ def addDaily():
 
 
 def getPageText():
-    page_id = '9a184abacb974033813ff696747d13a3'
+    # page_id = '9a184abacb974033813ff696747d13a3'
+    page_id = '7402edb13cda4274a519d24c4f26979b'
     url = 'https://api.notion.com/v1/pages/' + page_id
     response = requests.get(url, headers=headers)
     print(response.text)
@@ -82,9 +83,9 @@ def addDailyPage():
 
 if __name__ == '__main__':
     # queryDatabase()
-    # getPageText()
+    getPageText()
     # addDaily()
-    addDailyPage()
+    # addDailyPage()
 # 'properties': {
 #             '香信打卡': {
 #                 'id': '%3CvCS',
