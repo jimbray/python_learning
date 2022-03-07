@@ -11,14 +11,16 @@
 import requests
 
 
-def sendMessage(token, text) :
+
+
+def sendMessage(token, text):
     url = "https://qyapi.weixin.qq.com/cgi-bin/message/send?access_token=" + token
 
-    toUser = "@all"
+    toUser = "CaiJianBin"
     msgtype = "text"
     agentid = 1000002
 
-    res = requests.post(url, json={"touser": "@all", "msgtype": "text", "agentid": 1000002, "text": {"content": text}})
+    res = requests.post(url, json={"touser": toUser, "msgtype": msgtype, "agentid": agentid, "text": {"content": text}})
 
     print(res.json())
 
@@ -39,8 +41,8 @@ if __name__ == '__main__':
     if token == '':
         # 没有token
         pass
-    else :
-        sendMessage(token, "准备推送")
+    else:
+        sendMessage(token, "此消息仅发送给 CaiJianBin" )
 # var
 # msg = require("./wechat_message_obj");
 #
