@@ -6,7 +6,7 @@
 @time: 2021/11/26
 @contact: jimbra16@gmail.com
 @site: http://jimbray.xyz
-@Descriptions: 
+@Descriptions: 预约红立方！
 """
 import time
 
