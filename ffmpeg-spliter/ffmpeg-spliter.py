@@ -39,20 +39,28 @@ def get_time_diff(start, end):
     return end_time - start_time
 
 
-def split_video_by_duration(input_file, start_time, duration):
+# 通过时长参数分割视频
+def split_video_by_duration(input_file_path, start_time, duration):
     # 分割视频
-    cmd = "ffmpeg.exe -ss {1} -t {2} -i {0}  -c:v libx264 -c:a aac -strict " \
-          "experimental -b:a 98k {0}_split.mp4".format(input_file, start_time, duration)
-    print(cmd)
+    # 获取input_file 的前缀
+    input_file_prefix = input_file_path.split(".")[0]
+    start_time_str = start_time.replace(":", "-")
+    cmd = "ffmpeg.exe -ss {2} -t {3} -i {0}  -c:v libx264 -c:a aac -strict " \
+          "experimental -b:a 98k {1}_{4}_{3}.mp4".format(input_file_path, input_file_prefix, start_time, duration, start_time_str)
+    # print(cmd)
     # 执行命令
     os.system(cmd)
 
 
-def split_video_by_endtime(input_file, start_time, end_time):
+# 通过结束时间参数分割视频
+def split_video_by_endtime(input_file_path, start_time, end_time):
     # 分割视频
-    cmd = "ffmpeg.exe -ss {1} -t {2} -i {0}  -c:v libx264 -c:a aac -strict " \
-          "experimental -b:a 98k {0}_split.mp4".format(input_file, start_time, get_time_diff(start_time, end_time))
-    print(cmd)
+    input_file_prefix = input_file_path.split(".")[0]
+    start_time_str = start_time.replace(":", "-")
+    end_time_str = end_time.replace(":", "-")
+    cmd = "ffmpeg.exe -ss {2} -t {3} -i {0}  -c:v libx264 -c:a aac -strict " \
+          "experimental -b:a 98k {1}_{4}_{5}.mp4".format(input_file_path, input_file_prefix, start_time, get_time_diff(start_time, end_time), start_time_str, end_time_str)
+    # print(cmd)
     # 执行命令
     os.system(cmd)
 
