@@ -12,11 +12,35 @@
 # 读取两个参数：输入的文件名，开始时间，截取时长
 # 输出为输入文件名的前缀+"split"
 import os
+import argparse
 
 
-def split_video(input_file, start_time, duration):
+# get params from command line
+def get_params():
+    parser = argparse.ArgumentParser()
+    # parser.add_argument('-i', '--input', help='input file path', required=True)
+    # parser.add_argument('-s', '--start', help='start time', required=True)
+    # parser.add_argument('-d', '--duration', help='duration', required=True)
+
+    parser.add_argument('input', help='input file path')
+    parser.add_argument('start', help='start time')
+    parser.add_argument('-d', '--duration', help='duration')
+    parser.add_argument('-e', '--end', help='end time')
+    args = parser.parse_args()
+    return args
+
+
+# 计算两个时间的差值，以秒为单位
+def get_time_diff(start, end):
+    start_hour, start_min, start_sec = start.split(":")
+    end_hour, end_min, end_sec = end.split(":")
+    start_time = int(start_hour) * 3600 + int(start_min) * 60 + int(start_sec)
+    end_time = int(end_hour) * 3600 + int(end_min) * 60 + int(end_sec)
+    return end_time - start_time
+
+
+def split_video_by_duration(input_file, start_time, duration):
     # 分割视频
-    # cmd = "ffmpeg -i {0} -ss {1} -t {2} -c copy {0}_split".format(input_file, start_time, duration)
     cmd = "ffmpeg.exe -ss {1} -t {2} -i {0}  -c:v libx264 -c:a aac -strict " \
           "experimental -b:a 98k {0}_split.mp4".format(input_file, start_time, duration)
     print(cmd)
@@ -24,6 +48,27 @@ def split_video(input_file, start_time, duration):
     os.system(cmd)
 
 
+def split_video_by_endtime(input_file, start_time, end_time):
+    # 分割视频
+    cmd = "ffmpeg.exe -ss {1} -t {2} -i {0}  -c:v libx264 -c:a aac -strict " \
+          "experimental -b:a 98k {0}_split.mp4".format(input_file, start_time, get_time_diff(start_time, end_time))
+    print(cmd)
+    # 执行命令
+    os.system(cmd)
+
+
 # 需要先把 ffmpeg 的实际路径 设置为环境变量
 if __name__ == '__main__':
-    split_video("E:\\BaiduNetdiskDownload\\IDM-Download\\少林足球_2022-04-19_15-53-58.mp4", "00:10:00", 10)
+    args = get_params()
+    input_file = args.input
+    start_time = args.start
+    duration = args.duration
+    end_time = args.end
+    if duration is None and end_time is None:
+        print("duration or end_time is required")
+        exit(1)
+
+    if duration is not None:
+        split_video_by_duration(input_file, start_time, duration)
+    else:
+        split_video_by_endtime(input_file, start_time, end_time)
