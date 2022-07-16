@@ -34,9 +34,9 @@ def get_params():
 def get_time_diff(start, end):
     start_hour, start_min, start_sec = start.split(":")
     end_hour, end_min, end_sec = end.split(":")
-    start_time = int(start_hour) * 3600 + int(start_min) * 60 + int(start_sec)
-    end_time = int(end_hour) * 3600 + int(end_min) * 60 + int(end_sec)
-    return end_time - start_time
+    startTime = int(start_hour) * 3600 + int(start_min) * 60 + int(start_sec)
+    endTime = int(end_hour) * 3600 + int(end_min) * 60 + int(end_sec)
+    return endTime - startTime
 
 
 # 通过时长参数分割视频

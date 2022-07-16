@@ -20,7 +20,8 @@ type = sys.getfilesystemencoding()
 
 base_url = "http://webchatapi.sz-redcube.com"
 user_agent = "Mozilla/5.0 (Linux; Android 11; KB2000 Build/RP1A.201005.001; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/89.0.4389.72 MQQBrowser/6.2 TBS/045811 Mobile Safari/537.36 MMWEBID/2993 MicroMessenger/8.0.16.2040(0x28001053) Process/tools WeChat/arm64 Weixin NetType/WIFI Language/zh_CN ABI/arm64"
-cookies = "Hm_lvt_e67bacebe17684e796477e4caf93afe1=1637908127; Hm_lpvt_e67bacebe17684e796477e4caf93afe1=1637908391"
+# cookies = "Hm_lvt_e67bacebe17684e796477e4caf93afe1=1637908127; Hm_lpvt_e67bacebe17684e796477e4caf93afe1=1637908391"
+cookies = "Hm_lvt_e67bacebe17684e796477e4caf93afe1=1657925119; Hm_lpvt_e67bacebe17684e796477e4caf93afe1=1657937088"
 
 global_headers = {
     "user-agent": user_agent,
@@ -28,7 +29,7 @@ global_headers = {
     "Accept-Encoding": "gzip, deflate",
     "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8",
     "Accept": "*/*",
-    'Cookie': "Hm_lvt_e67bacebe17684e796477e4caf93afe1=1637908127; Hm_lpvt_e67bacebe17684e796477e4caf93afe1=1637908391",
+    'Cookie': "Hm_lvt_e67bacebe17684e796477e4caf93afe1=1657925119; Hm_lpvt_e67bacebe17684e796477e4caf93afe1=1657937088",
     "Connection": "keep-alive"
 }
 
@@ -46,8 +47,9 @@ def reservation():
 
     # 10316 是 11月27
     # 10318 是 12月04
+    # 12571 是 2022-07-16
 
-    date_id = "10316"
+    date_id = "12571"
 
     global device_id
     data = {
@@ -128,6 +130,7 @@ def get_contact_list():
     }
 
 
+# 没有查清是拿来做什么的
 def user_page():
     action = "/other/weixinNew/userPage/2"
     url = base_url + action
@@ -180,8 +183,14 @@ if __name__ == '__main__':
     #
     # user_page()
 
+    # # 预约IDEA 成功
     reservation()
+
+
+    # 获取时间戳
     # print(int(round(time.time() * 1000)))
+
+    # 获取签名
     # signParam()
 
 
