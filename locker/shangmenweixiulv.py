@@ -21,18 +21,19 @@ import pandas as pd
 def cleanData():
     print("清理列数据开始")
     # 读取原始 Excel 文件
-    file_path = 'data.xlsx'  # 请替换为您的文件路径
+    file_path = 'original-data.xlsx'  # 请替换为您的文件路径
     df = pd.read_excel(file_path, engine='openpyxl')
 
     # 保留必要的列
-    columns_to_keep = ['工单编号', '工单状态', '工单创建时间', '解决方案(安装师傅)']
+    columns_to_keep = ['工单编号', '工单状态', '工单创建时间', '解决方案(安装师傅)', '商户']
     df_cleaned = df[columns_to_keep]
 
     # 保存清理后的数据到新文件
-    cleaned_file_path = 'cleaned_data.xlsx'  # 新文件的路径
+    cleaned_file_path = 'shangmenweixiulv.xlsx'  # 新文件的路径
     df_cleaned.to_excel(cleaned_file_path, index=False, engine='openpyxl')
 
     print("数据清理完成，文件已保存为:", cleaned_file_path)
+    calRemainedRows(cleaned_file_path)
 
     return cleaned_file_path
 
@@ -56,12 +57,35 @@ def cleanData():
 #     return further_cleaned_file_path
 
 
+# 删除无效数据：[解决方案(安装师傅)] 为空 且 [工单状态] 为已验收
+def removeInvalidData(file_path):
+    print("删除无效数据开始")
+
+    # 读取清理后的数据
+    df = pd.read_excel(file_path, engine='openpyxl')
+
+    # 定义无效数据的条件
+    invalid_condition = df['解决方案(安装师傅)'].isna() & (df['工单状态'] == '已验收')
+
+    # 删除符合条件的行
+    df = df[~invalid_condition]
+
+    # 保存删除无效数据后的文件
+    cleaned_file_path = 'cleaned_valid_data.xlsx'
+    df.to_excel(cleaned_file_path, index=False, engine='openpyxl')
+
+    print("删除无效数据完成，文件已保存为:", cleaned_file_path)
+    calRemainedRows(cleaned_file_path)
+
+    return cleaned_file_path
+
+
 # 计算剩余数据的行数
-def calRemainedRows(further_cleaned_file_path):
+def calRemainedRows(file_path):
     print("计算剩余数据行数开始")
 
     # 读取经过进一步清理后的数据
-    df = pd.read_excel(further_cleaned_file_path, engine='openpyxl')
+    df = pd.read_excel(file_path, engine='openpyxl')
 
     # 计算并打印行数
     row_count = len(df)
@@ -74,16 +98,16 @@ def start():
     print("开始执行分析")
 
     # 清理数据
-    # cleaned_file_path = cleanData()
+    cleaned_file_path = cleanData()
 
-    cleaned_file_path = 'cleaned_data.xlsx'
+    # cleaned_file_path = 'cleaned_data.xlsx'
     # 清理空数据
     # further_cleaned_file_path = cleanNull(cleaned_file_path)
 
-    # 计算数据剩余行数
-    remained_rows = calRemainedRows(cleaned_file_path)
+    # 清除无效数据
+    cleaned_file_path = removeInvalidData(cleaned_file_path)
 
-    print("最终剩余数据的行数为：", remained_rows, "行")
+
 
 
 if __name__ == '__main__':

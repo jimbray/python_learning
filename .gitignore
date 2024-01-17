@@ -4,3 +4,5 @@
 /locker/cleaned_data.xlsx
 /locker/data.xlsx
 /locker/spilit-datas/
+/locker/*.xlsx
+/venv/
