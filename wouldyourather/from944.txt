@@ -1,0 +1,149 @@
+number,option1,option2,option1Votes,option2Votes,recommended,active,available,hidden,like,dislike,cat
+291,Have bad breath,Have smelly feet,441,2644,0,1,1,0,0,0,
+944,"marry for love, for practical purposes",never get married at all?,0,0,0,1,1,0,0,0,Deep
+945,find meaning in religion,be comfortable with atheism?,0,0,0,1,1,0,0,0,Deep
+946,people laughed,cried at your funeral?,0,0,0,1,1,0,0,0,Deep
+947,be able to see 10 minutes into the future,be able to erase three mistakes from your past?,0,0,0,1,1,0,0,0,Deep
+948,see prisons abolished,health care made free first?,0,0,0,1,1,0,0,0,Deep
+949,be single for 10 years,"have three relationships in 10 years that, going into them, you knew would all end?",0,0,0,1,1,0,0,0,Deep
+950,spend all the money you made in life,have something to leave behind?,0,0,0,1,1,0,0,0,Deep
+951,die before,after your partner?,0,0,0,1,1,0,0,0,Deep
+952,never make a new friend but keep pouring into the ones you have now,"continue to expand your circle, knowing some friendships will fall off?",0,0,0,1,1,0,0,0,Deep
+953,dismantle systems of oppression from the inside,the outside?,0,0,0,1,1,0,0,0,Deep
+954,Have pizza for breakfast,Have pancakes for dinner,0,0,0,1,1,0,0,0,Food
+955,Eat spaghetti with meatballs,Eat tacos with all the toppings,0,0,0,1,1,0,0,0,Food
+956,Have a chocolate milkshake,Have a strawberry smoothie,0,0,0,1,1,0,0,0,Food
+957,Eat a big bowl of popcorn,Eat a plate of nachos with cheese,0,0,0,1,1,0,0,0,Food
+958,Have a giant cookie,Have a slice of cake with sprinkles,0,0,0,1,1,0,0,0,Food
+959,Snack on carrot sticks with ranch dip,Snack on celery sticks with peanut butter,0,0,0,1,1,0,0,0,Food
+960,Have a hot dog at a baseball game,Have a burger at a barbecue,0,0,0,1,1,0,0,0,Food
+961,Eat a rainbow of colorful fruits,Eat a plate of cheesy macaroni,0,0,0,1,1,0,0,0,Food
+962,Try sushi for the first time,Eat a delicious taco,0,0,0,1,1,0,0,0,Food
+963,Have a picnic with sandwiches,Have a picnic with sushi rolls,0,0,0,1,1,0,0,0,Food
+964,Have a watermelon eating contest,Have a strawberry picking adventure,0,0,0,1,1,0,0,0,Food
+965,Sip on lemonade,Enjoy a refreshing glass of apple cider,0,0,0,1,1,0,0,0,Food
+966,Make your own pizza from scratch,Bake your own batch of cookies,0,0,0,1,1,0,0,0,Food
+967,Have a banana split with all the toppings,Build your own ice cream sundae,0,0,0,1,1,0,0,0,Food
+968,Try a new vegetable every day for a week,Taste a new dessert every day for a week,0,0,0,1,1,0,0,0,Food
+969,Play soccer on a sunny day,Ice skate on a frozen pond,0,0,0,1,1,0,0,0,Sport
+970,Win a gold medal in the Olympics,Score the winning goal in a championship game,0,0,0,1,1,0,0,0,Sport
+971,Be a professional basketball player,Be a famous gymnast,0,0,0,1,1,0,0,0,Sport
+972,Go surfing at the beach,Snowboard in the mountains,0,0,0,1,1,0,0,0,Sport
+973,Swim with dolphins,Ride a horse,0,0,0,1,1,0,0,0,Sport
+974,Play baseball in a stadium,Go rock climbing,0,0,0,1,1,0,0,0,Sport
+975,Compete in a relay race,A solo marathon,0,0,0,1,1,0,0,0,Sport
+976,Play tennis against a famous player,Learn a new sport from scratch,0,0,0,1,1,0,0,0,Sport
+977,Score a winning touchdown,Hit a game-winning home run,0,0,0,1,1,0,0,0,Sport
+978,Learn karate,Take ballet lessons,0,0,0,1,1,0,0,0,Sport
+979,Play golf,Go roller skating,0,0,0,1,1,0,0,0,Sport
+980,Be a star player on a team,A coach leading a championship-winning team,0,0,0,1,1,0,0,0,Sport
+981,Attend a sports camp for a week,Join a dance workshop,0,0,0,1,1,0,0,0,Sport
+982,Try bungee jumping,Zip-lining,0,0,0,1,1,0,0,0,Sport
+983,Have a career as a professional skateboarder,A champion swimmer,0,0,0,1,1,0,0,0,Sport
+984,Have a big family reunion with all your cousins,A special day with just your immediate family,0,0,0,1,1,0,0,0,Family
+985,Have a family movie night,A family game night,0,0,0,1,1,0,0,0,Family
+986,Go on a vacation to the beach with your family,To the mountains,0,0,0,1,1,0,0,0,Family
+987,Have a picnic in the park with your family,A barbecue in the backyard,0,0,0,1,1,0,0,0,Family
+988,Have a pizza party with your family,Make homemade ice cream together,0,0,0,1,1,0,0,0,Family
+989,Have a sibling who is your twin,A sibling who is much older or younger,0,0,0,1,1,0,0,0,Family
+990,Have a family pet that's a dog,A cat,0,0,0,1,1,0,0,0,Family
+991,Have a family talent show,A family baking contest,0,0,0,1,1,0,0,0,Family
+992,Have a family dance-off,A family karaoke night,0,0,0,1,1,0,0,0,Family
+993,Go on a nature hike with your family,Visit a museum together,0,0,0,1,1,0,0,0,Family
+994,Have a family board game tournament,A family sports day,0,0,0,1,1,0,0,0,Family
+995,Have a camping trip with your family,A staycation at home with fun activities planned,0,0,0,1,1,0,0,0,Family
+996,Have a family photo album filled with memories,A family scrapbook with creative artwork,0,0,0,1,1,0,0,0,Family
+997,Have a family tradition of making homemade pizza every Friday night,Going on a nature walk every Sunday morning,0,0,0,1,1,0,0,0,Family
+998,Have a family garden where everyone plants flowers and vegetables,A family reading nook where everyone reads together,0,0,0,1,1,0,0,0,Family
+999,Have a family celebration for every member's birthday,One big celebration for everyone's birthday together,0,0,0,1,1,0,0,0,Family
+1000,Have the ability to fly like a bird,Breathe underwater like a fish,0,0,0,1,1,0,0,0,Life
+1001,Have a magical pet unicorn,A pet dragon,0,0,0,1,1,0,0,0,Life
+1002,Explore outer space,Dive to the bottom of the ocean,0,0,0,1,1,0,0,0,Life
+1003,Have the power to talk to animals,The power to turn invisible,0,0,0,1,1,0,0,0,Life
+1004,Live in a treehouse,A castle,0,0,0,1,1,0,0,0,Life
+1005,Discover a hidden treasure,Find a secret portal to another world,0,0,0,1,1,0,0,0,Life
+1006,Be able to run as fast as a cheetah,Jump as high as a kangaroo,0,0,0,1,1,0,0,0,Life
+1007,Visit a magical candy land,A dinosaur park,0,0,0,1,1,0,0,0,Life
+1008,Have the ability to time travel to the past,See into the future,0,0,0,1,1,0,0,0,Life
+1009,Have super strength,The ability to control the weather,0,0,0,1,1,0,0,0,Life
+1010,Speak every language in the world,Play every musical instrument,0,0,0,1,1,0,0,0,Life
+1011,Have a magic wand that grants wishes,A flying carpet,0,0,0,1,1,0,0,0,Life
+1012,Be a famous inventor,A world-famous explorer,0,0,0,1,1,0,0,0,Life
+1013,Live in a world with endless daylight,A world with never-ending nighttime,0,0,0,1,1,0,0,0,Life
+1014,Have a personal robot assistant,A talking pet that gives you advice,0,0,0,1,1,0,0,0,Life
+1015,Explore a dense jungle,Climb a towering mountain,0,0,0,1,1,0,0,0,Nature
+1016,Have a pet panda,A pet tiger,0,0,0,1,1,0,0,0,Nature
+1017,Spend a day at the beach building sandcastles,Hiking in the forest,0,0,0,1,1,0,0,0,Nature
+1018,The ability to talk to animals,The ability to understand plants,0,0,0,1,1,0,0,0,Nature
+1019,Camp under the stars,Sleep in a cozy cabin,0,0,0,1,1,0,0,0,Nature
+1020,Swim with dolphins,Ride a horse through a meadow,0,0,0,1,1,0,0,0,Nature
+1021,Have a garden filled with colorful flowers,A garden full of delicious fruits and vegetables,0,0,0,1,1,0,0,0,Nature
+1022,Discover a hidden waterfall,Find a treasure chest buried in the woods,0,0,0,1,1,0,0,0,Nature
+1023,Have a treehouse in the middle of a forest,A lakeside cottage,0,0,0,1,1,0,0,0,Nature
+1024,A magical potion that makes you shrink to the size of an ant,Grow as tall as a tree,0,0,0,1,1,0,0,0,Nature
+1025,Fly like a butterfly,Run as fast as a cheetah,0,0,0,1,1,0,0,0,Nature
+1026,Visit a coral reef and see colorful fish,Explore a vast desert and see towering sand dunes,0,0,0,1,1,0,0,0,Nature
+1027,Have a picnic in a field of wildflowers,Under the shade of a giant redwood tree,0,0,0,1,1,0,0,0,Nature
+1028,Have a pet owl that can deliver secret messages,A pet fox that can find hidden treasures,0,0,0,1,1,0,0,0,Nature
+1029,Have the power to make it rain,Make the sun shine whenever you want,0,0,0,1,1,0,0,0,Nature
+1030,Have the ability to teleport,Be able to time travel,0,0,0,1,1,0,0,0,Science
+1031,Explore outer space,Explore the depths of the ocean,0,0,0,1,1,0,0,0,Science
+1032,Have X-ray vision,The ability to fly,0,0,0,1,1,0,0,0,Science
+1033,Control the weather,Have super strength,0,0,0,1,1,0,0,0,Science
+1034,Discover a new planet,Find a cure for a disease,0,0,0,1,1,0,0,0,Science
+1035,Talk to animals,Speak every language in the world,0,0,0,1,1,0,0,0,Science
+1036,Change the color of your eyes at will,Change your hair color instantly,0,0,0,1,1,0,0,0,Science
+1037,Have a robot friend who can do your homework,A pet dinosaur,0,0,0,1,1,0,0,0,Science
+1038,Invent a new gadget that everyone loves,Discover a new species of animal,0,0,0,1,1,0,0,0,Science
+1039,Have a time machine that takes you to the past,To the future,0,0,0,1,1,0,0,0,Science
+1040,Have a laboratory full of cool science experiments,A library full of books about the universe,0,0,0,1,1,0,0,0,Science
+1041,Breathe underwater,Walk on clouds,0,0,0,1,1,0,0,0,Science
+1042,Talk to plants,Control the growth of trees and flowers,0,0,0,1,1,0,0,0,Science
+1043,Have a jetpack that lets you fly anywhere,A hoverboard that glides over water,0,0,0,1,1,0,0,0,Science
+1044,Have a robot dog that can do tricks,A robot that helps you with your schoolwork,0,0,0,1,1,0,0,0,Science
+1045,Have a pet dolphin,A pet monkey,0,0,0,1,1,0,0,0,Animal
+1046,Talk to dogs,Communicate with birds,0,0,0,1,1,0,0,0,Animal
+1047,Have a pet turtle that lives for 100 years,A pet parrot that can mimic any sound,0,0,0,1,1,0,0,0,Animal
+1048,Have a sleepover at the zoo,A safari adventure in the wild,0,0,0,1,1,0,0,0,Animal
+1049,Swim like a fish,Climb like a monkey,0,0,0,1,1,0,0,0,Animal
+1050,Have a pet tiger that acts like a kitten,A pet elephant with magical powers,0,0,0,1,1,0,0,0,Animal
+1051,Fly like a bird,Run as fast as a cheetah,0,0,0,1,1,0,0,0,Animal
+1052,Have a hedgehog friend,A rabbit companion,0,0,0,1,1,0,0,0,Animal
+1053,Discover a hidden treasure guarded by lions,Find a secret passage in a mysterious jungle,0,0,0,1,1,0,0,0,Animal
+1054,Have a pet panda that loves to play,A koala that loves to cuddle,0,0,0,1,1,0,0,0,Animal
+1055,Spend a day with penguins in Antarctica,With elephants in Africa,0,0,0,1,1,0,0,0,Animal
+1056,Camouflage like a chameleon,Night vision like an owl,0,0,0,1,1,0,0,0,Animal
+1057,Have a pet dragonfly that can take you on flying adventures,A pet fox that can solve mysteries,0,0,0,1,1,0,0,0,Animal
+1058,Explore a coral reef and meet colorful fish,Trek through a rainforest and encounter exotic birds,0,0,0,1,1,0,0,0,Animal
+1059,Have a pet kangaroo that carries you around,A polar bear that keeps you warm in cold weather,0,0,0,1,1,0,0,0,Animal
+1060,Have a pet octopus with eight arms,A giraffe with a long neck,0,0,0,1,1,0,0,0,Animal
+1061,Star in a superhero movie,Be the lead in a magical fantasy film,0,0,0,1,1,0,0,0,Entertainment
+1062,Attend a concert of your favorite singer,Watch a live performance of your favorite band,0,0,0,1,1,0,0,0,Entertainment
+1063,Meet a famous actor/actress,A famous musician,0,0,0,1,1,0,0,0,Entertainment
+1064,Have a dance party with your friends,A karaoke night with family,0,0,0,1,1,0,0,0,Entertainment
+1065,Have front-row tickets to a circus show,A magic show,0,0,0,1,1,0,0,0,Entertainment
+1066,Go to a theme park,A water park for a day of fun,0,0,0,1,1,0,0,0,Entertainment
+1067,Have a sleepover and watch movies all night,Go camping and tell ghost stories around a campfire,0,0,0,1,1,0,0,0,Entertainment
+1068,Have a magic wand that can make any toy come to life,A book that transports you into its story,0,0,0,1,1,0,0,0,Entertainment
+1069,Have a private concert by your favorite band,VIP tickets to a Broadway musical,0,0,0,1,1,0,0,0,Entertainment
+1070,Be the main character in a video game,The host of a TV show,0,0,0,1,1,0,0,0,Entertainment
+1071,Star in a comedy movie,A mystery-solving adventure,0,0,0,1,1,0,0,0,Entertainment
+1072,Have a talent for drawing cartoons,Writing funny jokes,0,0,0,1,1,0,0,0,Entertainment
+1073,Have a backyard full of trampolines,A room full of board games,0,0,0,1,1,0,0,0,Entertainment
+1074,Perform in a talent show,Participate in a cooking competition,0,0,0,1,1,0,0,0,Entertainment
+1075,Have a virtual reality headset that lets you enter any movie,A robot friend that can talk and play games,0,0,0,1,1,0,0,0,Entertainment
+1076,Have a superpower that helps you learn any subject instantly,Be able to visit any historical event in person,0,0,0,1,1,0,0,0,Education
+1077,Have a personal robot tutor,Attend a school with all your friends,0,0,0,1,1,0,0,0,Education
+1078,Have a library filled with every book ever written,A computer that can answer any question,0,0,0,1,1,0,0,0,Education
+1079,Learn about dinosaurs,Outer space,0,0,0,1,1,0,0,0,Education
+1080,Have a math competition with friends,A science experiment day,0,0,0,1,1,0,0,0,Education
+1081,Explore ancient ruins,Discover a new species of animal,0,0,0,1,1,0,0,0,Education
+1082,Learn to play a musical instrument,Speak a new language,0,0,0,1,1,0,0,0,Education
+1083,Attend a virtual reality school where you can visit any place,A school with amazing outdoor classrooms,0,0,0,1,1,0,0,0,Education
+1084,Have a time machine to visit famous inventors,Be able to talk to animals and learn their secrets,0,0,0,1,1,0,0,0,Education
+1085,Have a science lab at home,An art studio with endless art supplies,0,0,0,1,1,0,0,0,Education
+1086,Have a teacher who can explain any concept in a fun way,Be friends with a famous scientist,0,0,0,1,1,0,0,0,Education
+1087,Solve challenging puzzles,Create your own inventions,0,0,0,1,1,0,0,0,Education
+1088,Have a school that teaches magic,A school that teaches how to build robots,0,0,0,1,1,0,0,0,Education
+1089,Learn history by traveling through time,Learn geography by exploring the world,0,0,0,1,1,0,0,0,Education
+1090,Have a notebook that turns your drawings into real objects,A backpack that holds unlimited books,0,0,0,1,1,0,0,0,Education
